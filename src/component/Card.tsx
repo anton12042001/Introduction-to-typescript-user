@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, {FC, PropsWithChildren, useState} from 'react';
 
 export enum CardVariant {
     outlined = "outlined",
@@ -11,6 +11,7 @@ interface CardProps{
     height?:string
     variant: CardVariant
 
+
 }
 
 const Card: FC<PropsWithChildren<CardProps>> =
@@ -20,10 +21,14 @@ const Card: FC<PropsWithChildren<CardProps>> =
          ,children
          ,variant
     }) => {
+
+    const [state, setState] = useState(0)
+
     return (
         <div style={{width,height, border: variant === CardVariant.outlined ? '1px solid gray' : "none",
             background:variant === CardVariant.primary ? "lightgray" : " "
-        }} >
+        }}
+        >
             {children}
         </div>
     );
